@@ -8,6 +8,8 @@ class TitleScreenState extends BaseState {
         gTitleElement.classList.remove('hidden')
         gDescriptionElement.classList.remove('hidden')
         gPlayPauseIndicator.classList.add('hidden')
+
+        document.querySelector('.credits').classList.remove('faded')
     }
 
     update = () => {

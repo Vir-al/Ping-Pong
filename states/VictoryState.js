@@ -15,6 +15,7 @@ class VictoryState extends BaseState {
         this.countDownInterval = setInterval(this.countDownFunction, 500)
 
         window.confettiful = new Confettiful(document.querySelector('#canvas'));
+        document.querySelector('.credits').classList.remove('faded')
     }
 
     update = () => {

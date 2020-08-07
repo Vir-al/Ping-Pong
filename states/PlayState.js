@@ -12,6 +12,8 @@ class PlayState extends BaseState {
         document.querySelector(".player-2 .player-name").innerHTML = gPlayer2Name
         document.querySelector(".player-2 .score").innerHTML = 0
         document.querySelector(".player-1 .score").innerHTML = 0
+
+        document.querySelector('.credits').classList.add('faded')
     }
 
 

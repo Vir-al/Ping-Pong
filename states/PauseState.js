@@ -8,6 +8,7 @@ class PauseState extends BaseState {
         gTitleElement.classList.remove('hidden')
         gDescriptionElement.classList.add('hidden')
         gPlayPauseIndicator.classList.remove('hidden')
+        document.querySelector('.credits').classList.add('faded')
     }
 
     update = () => {
