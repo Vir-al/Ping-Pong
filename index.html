@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping pong</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./libraries/confetti.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.js"></script>
+    <script src="./libraries/confetti.js"></script>
+    <script src="./StateMachine.js"></script>
+    <script src="./states/BaseState.js"></script>
+    <script src="./states/PauseState.js"></script>
+    <script src="./states/VictoryState.js"></script>
+    <script src="./states/PlayState.js"></script>
+    <script src="./states/CountdownState.js"></script>
+    <script src="./states/TitleState.js"></script>
+    <script src="./Ball.js"></script>
+    <script src="./Paddle.js"></script>
+    <script src="./index.js"></script>
+</head>
+<body>
+    <h2 class="title hidden">Welcome to ping pong</h2>
+    <p class="description hidden">Press enter to start the game</p>
+    <div class="score-container hidden">
+        <div class="player-1">
+            <p class="player-name">Player 1</p>
+            <p class="score">0</p>
+        </div>
+        <div class="divider"></div>
+        <div class="player-2">
+            <p class="player-name">Player 2</p>
+            <p class="score">0</p>
+        </div>
+    </div>
+    
+    <div class="countdown hidden">3</div>
+    
+    <div id="canvas" style="position: absolute;"></div>
+    <p class="play-pause-indicator hidden">eoigfe</p>
+
+</body>
+</html>

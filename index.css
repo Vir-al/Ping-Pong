@@ -1,0 +1,89 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+}
+
+.title {
+    margin: 2rem 0 0;
+    text-align: center;
+    color: aliceblue;
+}
+
+.title .name {
+    text-decoration: underline;
+}
+
+.description {
+    margin: 2rem 0 0;
+    color: aliceblue;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.play-pause-indicator {
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+    color: aliceblue;
+    font-size: larger;
+    width: 100vw;
+    margin: 0 0 1rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.divider {
+    width: 0.5px;
+    background: aliceblue;
+    margin: 0 50px;
+}
+
+.score-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 0 0;
+}
+
+.score-container .player-name {
+    color: aliceblue;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.score-container .score {
+    font-size: 4rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    color: aliceblue;
+    text-align: center;
+}
+
+.countdown {
+    margin: auto;
+    text-align: center;
+    font-size: 5rem;
+    color: aliceblue;
+    height: 100vh;
+    line-height: 100vh;
+}
+
+#canvas {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(68, 126, 235);
+}
+
+.hidden {
+    display: none;
+}
