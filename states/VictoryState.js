@@ -30,7 +30,7 @@ class VictoryState extends BaseState {
         if (this.keyBoardEntry() || this.mouseEntry()) {
             player1Score = 0
             player2Score = 0
-            gBallSpeed += 3
+            // gBallSpeed += 3
             gSounds.startGame.play()
             window.confettiful.stop()
             gStateMachine.changeState("countDown")

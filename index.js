@@ -1,6 +1,6 @@
 
 let balls = [];
-let gBallSpeed = 10;
+let gBallSpeed = 7;
 let windowWidth, windowHeight;
 
 
