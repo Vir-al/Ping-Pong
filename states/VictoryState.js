@@ -18,8 +18,16 @@ class VictoryState extends BaseState {
         document.querySelector('.credits').classList.remove('faded')
     }
 
+    keyBoardEntry = () => {
+        return gCanvas.keyIsDown(13) || gCanvas.keyIsDown(27) || gCanvas.keyIsDown(32)
+    }
+
+    mouseEntry = () => {
+        return gCanvas.mouseIsPressed
+    }
+
     update = () => {
-        if (gCanvas.keyIsDown(13) || gCanvas.keyIsDown(27) || gCanvas.keyIsDown(32)) {
+        if (this.keyBoardEntry() || this.mouseEntry()) {
             player1Score = 0
             player2Score = 0
             gBallSpeed += 3
