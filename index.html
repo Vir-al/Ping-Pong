@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Ping pong</title>
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./libraries/confetti.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js"></script>
     <script src="./libraries/confetti.js"></script>
     <script src="./StateMachine.js"></script>
     <script src="./states/BaseState.js"></script>
+    <script src="./states/InitializeForMobileState.js"></script>
     <script src="./states/PauseState.js"></script>
     <script src="./states/VictoryState.js"></script>
     <script src="./states/PlayState.js"></script>
@@ -29,7 +31,6 @@
             <p class="player-name">Player 1</p>
             <p class="score">0</p>
         </div>
-        <div class="divider"></div>
         <div class="player-2">
             <p class="player-name">Player 2</p>
             <p class="score">0</p>
@@ -39,7 +40,9 @@
     <div class="countdown hidden">3</div>
     
     <div id="canvas" style="position: absolute;"></div>
-    <p class="play-pause-indicator hidden">eoigfe</p>
+    <div class="play-pause-wrapper">
+        <p class="play-pause-indicator hidden"></p>
+    </div>
 
     <span class="credits">Made with <span class="heart">❤</span> by Viral Limbani</span>
 </body>

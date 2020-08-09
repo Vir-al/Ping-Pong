@@ -1,7 +1,8 @@
 class PauseState extends BaseState {
     enter = () => {
         gTitleElement.innerHTML = 'Game Paused!'
-        gPlayPauseIndicator.innerHTML = 'To resume press "R"'
+        let decisionKey = gIsMobile ? 'tap here' : 'press "R"'
+        gPlayPauseIndicator.innerHTML = `To resume ${decisionKey}`
         
         gScoreContainerElement.classList.add('hidden')
         gCountDownElement.classList.add('hidden')

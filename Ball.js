@@ -19,7 +19,7 @@ class Ball {
     }
 
     initializeVelocity = () => {
-        // this.speedVec = this.canvas.createVector(0.9883975208878653, -0.15188923827158374)
+        // this.speedVec = this.canvas.createVector(-0.9883975208878653, -0.15188923827158374)
         this.speedVec = p5.Vector.random2D()
         while (Math.abs(this.speedVec.x) < Math.abs(this.speedVec.y)) {
             this.speedVec = p5.Vector.random2D()
@@ -70,7 +70,7 @@ class Ball {
     collision = (paddle) => {
         if (this.x - this.width/2 >= paddle.x + paddle.width || paddle.x - paddle.width/2 >= this.x + this.width)
             return false
-        if (this.y - this.height/2 > paddle.y + paddle.height || paddle.y - paddle.height/2 > this.y + this.height)
+        if (this.y - this.height/2 > paddle.y + paddle.height/2 || paddle.y - paddle.height/2 > this.y + this.height/2)
             return false
         return true
     }
@@ -79,8 +79,10 @@ class Ball {
         this.canvas.noStroke()
         // this.canvas.fill(255)
         this.canvas.ellipse(this.x, this.y, this.width, this.height)
-        // this.canvas.strokeWeight(2)
-        // this.canvas.stroke(0 ,255, 0)
-        // this.canvas.point(this.x, this.y)
+    //     this.canvas.push()
+    //     this.canvas.strokeWeight(2)
+    //     this.canvas.stroke(0 ,255, 0)
+    //     this.canvas.point(this.x, this.y)
+    //     this.canvas.pop()
     }
 }

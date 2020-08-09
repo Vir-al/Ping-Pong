@@ -1,7 +1,45 @@
+
+const keyboardPaddleControl = () => {
+    if(gCanvas.keyIsDown(gCanvas.UP_ARROW)) {
+        paddle2.moveUp()
+    } else if (gCanvas.keyIsDown(gCanvas.DOWN_ARROW)) {
+        paddle2.moveDown()
+    }
+
+    if(gCanvas.keyIsDown(87)) {
+        paddle1.moveUp()
+    } else if (gCanvas.keyIsDown(83)) {
+        paddle1.moveDown()
+    }
+}
+
+const touchPaddleControl = () => {
+    let leftControl = _.find(gTouchArray, t => t.role == 'left')
+    let rightControl = _.find(gTouchArray, t => t.role == 'right')
+
+    if (leftControl) {
+        if(leftControl.y < windowHeight/2) {
+            paddle1.moveUp()
+        } else if (leftControl.y >= windowHeight/2) {
+            paddle1.moveDown()
+        }
+    }
+
+    if(rightControl) {
+        if(rightControl.y < windowHeight/2) {
+            paddle2.moveUp()
+        } else if (rightControl.y >= windowHeight/2) {
+            paddle2.moveDown()
+        }
+    }
+}
+
 class PlayState extends BaseState {
+
     enter = () => {
 
-        gPlayPauseIndicator.innerHTML = 'To Pause press "P"'
+        let decisionKey = gIsMobile ? 'tap here' : 'press "P"'
+        gPlayPauseIndicator.innerHTML = `To Pause ${decisionKey}`
 
         gScoreContainerElement.classList.remove('hidden')
         gCountDownElement.classList.add('hidden')
@@ -56,19 +94,9 @@ class PlayState extends BaseState {
             // ball.bounceBackFromLeftRight(0, windowWidth)
         });
 
-
-        if(gCanvas.keyIsDown(gCanvas.UP_ARROW)) {
-            paddle2.moveUp()
-        } else if (gCanvas.keyIsDown(gCanvas.DOWN_ARROW)) {
-            paddle2.moveDown()
-        }
-
-        if(gCanvas.keyIsDown(87)) {
-            paddle1.moveUp()
-        } else if (gCanvas.keyIsDown(83)) {
-            paddle1.moveDown()
-        }
-
+        keyboardPaddleControl()
+        touchPaddleControl()
+        
         if (gCanvas.keyIsDown(80)) {
             gSounds.playPause.play()
             gStateMachine.changeState("pause")
@@ -77,6 +105,18 @@ class PlayState extends BaseState {
     }
 
     render = () => {
+        gCanvas.push()
+            gCanvas.stroke(255, 255, 255, 100)
+            linedash(windowWidth/2 , 0, windowWidth/2 , windowHeight)
+        gCanvas.pop()
+
+        if(gIsMobile) {
+            gCanvas.push()
+                gCanvas.stroke(255, 255, 255, 50)
+                linedash(0 , windowHeight/2, windowWidth, windowHeight/2, [15, 5, 5])
+            gCanvas.pop()
+        }
+
         gCanvas.fill(12, 0, 72)
         balls.forEach(ball => {
             ball.render()
@@ -85,5 +125,10 @@ class PlayState extends BaseState {
         gCanvas.fill(255)
         paddle1.render()
         paddle2.render()
+
+        
     }
 }
+
+
+// Can we expect some course on networking or more like cyber security (VAPT) and ethical hacking?

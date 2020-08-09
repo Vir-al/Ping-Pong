@@ -22,6 +22,8 @@ class CountdownState extends BaseState {
         gCountDownElement.innerHTML = String(this.counter)
         this.countDownInterval = setInterval(this.countDownFunction, 500)
         document.querySelector('.credits').classList.remove('faded')
+
+        initComponents()
     }
 
     render = () => {

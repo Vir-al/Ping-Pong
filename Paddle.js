@@ -28,9 +28,11 @@ class Paddle {
         this.canvas.textSize(this.keySetFontSize)
         this.canvas.text(this.keySet[0], this.x, 12)
         this.canvas.text(this.keySet[1], this.x, windowHeight - 12)
+        // this.canvas.push()
         // this.canvas.stroke(0 ,255, 0)
-        // this.canvas.strokeWeight(10)
-        // this.canvas.point(this.x, 10)
+        // this.canvas.strokeWeight(5)
+        // this.canvas.point(this.x, this.y)
+        // this.canvas.pop()
 
     }
 }
