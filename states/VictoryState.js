@@ -1,40 +1,34 @@
 class VictoryState extends BaseState {
 
+    resetGame = () => {
+        player1Score = 0
+        player2Score = 0
+        // gBallSpeed += 3
+        gSounds.startGame.play()
+        window.confettiful.stop()
+        hideExistingScores()
+        gDescriptionElement.removeEventListener('click', this.resetGame)
+        gStateMachine.changeState("countDown")
+    }
+
     enter = () => {
         gSounds.winner.play()
         gScoreContainerElement.classList.add('hidden')
         gCountDownElement.classList.add('hidden')
 
         gTitleElement.innerHTML = `Congratulations ${gWinner}! You won the game.`
-        gDescriptionElement.innerHTML = 'Press enter to start again'
+        gDescriptionElement.innerHTML = 'Press here to start again'
         gPlayPauseIndicator.classList.add('hidden')
         gTitleElement.classList.remove('hidden')
         gDescriptionElement.classList.remove('hidden')
-        this.frameCounter = 0
-        this.counter = 3
-        this.countDownInterval = setInterval(this.countDownFunction, 500)
+
+        saveScoresToCookie(player1Score, player2Score)
+        populateExistingScores()
 
         window.confettiful = new Confettiful(document.querySelector('#canvas'));
         document.querySelector('.credits').classList.remove('faded')
-    }
 
-    keyBoardEntry = () => {
-        return gCanvas.keyIsDown(13) || gCanvas.keyIsDown(27) || gCanvas.keyIsDown(32)
-    }
-
-    mouseEntry = () => {
-        return gCanvas.mouseIsPressed
-    }
-
-    update = () => {
-        if (this.keyBoardEntry() || this.mouseEntry()) {
-            player1Score = 0
-            player2Score = 0
-            // gBallSpeed += 3
-            gSounds.startGame.play()
-            window.confettiful.stop()
-            gStateMachine.changeState("countDown")
-        }
+        gDescriptionElement.addEventListener('click', this.resetGame)
     }
 
     render = () => {

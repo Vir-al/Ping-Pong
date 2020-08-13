@@ -14,6 +14,8 @@ class TitleScreenState extends BaseState {
         gDescriptionElement.classList.remove('hidden')
         gPlayPauseIndicator.classList.add('hidden')
 
+        populateExistingScores()
+
         document.querySelector('.credits').classList.remove('faded')
 
         this.acceptInput = gIsMobile ? false : true
@@ -30,8 +32,9 @@ class TitleScreenState extends BaseState {
     }
 
     update = () => {
-        if (this.keyBoardEntry() || this.mouseEntry() && this.acceptInput) {
+        if (this.keyBoardEntry() && this.acceptInput) {
             gSounds.startGame.play()
+            hideExistingScores()
             gStateMachine.changeState("countDown")
         }
     }

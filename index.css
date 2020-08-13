@@ -12,6 +12,9 @@
 body {
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .title {
@@ -110,4 +113,39 @@ span.credits {
 
 .hidden {
     display: none;
+}
+
+.existing-score {
+    width: fit-content;
+    align-self: center;
+    color: aliceblue;
+    margin: 2rem 0 0;
+}
+
+.existing-score h3 {
+    text-align: center;
+    margin: 0 0 1rem;
+}
+
+.existing-score table {
+    border-collapse: collapse;
+}
+
+.existing-score thead {
+    border-bottom: 1px solid aliceblue;
+    border-image: linear-gradient(to right, aliceblue, rgba(240, 248, 255, 0)) 1; 
+}
+
+.existing-score tr td:not(:first-child), .existing-score tr th:not(:first-child) {
+    border-left: 1px solid aliceblue;
+    border-image: linear-gradient(to right, aliceblue, rgba(240, 248, 255, 0)) 1; 
+}
+
+.existing-score td, .existing-score th {
+    padding: 10px;
+    text-align: center;
+}
+
+.existing-score tr td {
+    font-size: x-large;
 }

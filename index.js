@@ -1,6 +1,6 @@
 
 let balls = [];
-let gBallSpeed = 7;
+let gBallSpeed = 10;
 let windowWidth, windowHeight;
 
 
@@ -79,6 +79,21 @@ const updateTouch = (touches) => {
     })
 }
 
+const getScoresFromCookie = () => {
+    return JSON.parse(getCookieValue('scores') || '[]')
+}
+
+const saveScoresToCookie = (player1Score, player2Score) => {
+    let currentScores = getScoresFromCookie()
+    if (currentScores.length > 2)
+        currentScores.splice(0, 1)
+    currentScores.push({
+        player1Score,
+        player2Score
+    })
+    setCookie('scores', JSON.stringify(currentScores), 10)
+}
+
 const linedash = (x1, y1, x2, y2, list = [20, 5, 5, 5, 5, 5, 5, 5]) => {
     gCanvas.drawingContext.setLineDash(list);
     gCanvas.line(x1, y1, x2, y2)
@@ -88,7 +103,6 @@ const linedash = (x1, y1, x2, y2, list = [20, 5, 5, 5, 5, 5, 5, 5]) => {
 
 const initComponents = () => {
     balls = []
-    console.log(balls)
     for (let index = 0; index < 1; index++) {
         let ball = new Ball(windowWidth/2, windowHeight/2, 15, 15, gBallSpeed, gCanvas)
         ball.initializeVelocity()
@@ -233,7 +247,7 @@ getPlayerNames = (player, existingName) => {
     }
 }
 
-const getCookieValue = (c_name) => {
+window.getCookieValue = (c_name) => {
     var i, x, y, ARRcookies = document.cookie.split(";");
     for (i = 0; i < ARRcookies.length; i++) {
         x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
@@ -245,7 +259,7 @@ const getCookieValue = (c_name) => {
     }
 }
 
-const setCookie = (c_name, value, exdays) => {
+window.setCookie = (c_name, value, exdays) => {
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + exdays);
     var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());

@@ -59,6 +59,7 @@ class PlayState extends BaseState {
         balls.forEach(ball => {
             ball.update()
             ball.bounceBackFromTopBottom(0, windowHeight)
+            // ball.bounceBackFromLeftRight(0, windowWidth)
             if (ball.collision(paddle1) || ball.collision(paddle2)) {
                 gSounds.collideWithPaddle.play()
                 ball.bounceX()
