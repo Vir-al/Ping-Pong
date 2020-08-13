@@ -7,12 +7,7 @@ const populateExistingScores = () => {
     let player2name = document.querySelector('.existing-score .player-2-name')
     player1name.innerHTML = gPlayer1Name
     player2name.innerHTML = gPlayer2Name
-    let scores = getCookieValue('scores')
-    try {
-        scores = JSON.parse(scores)
-    } catch {
-        console.log('Nothing to do')
-    }
+    let scores = getScoresFromCookie()
     if (scores.length) {
         existingScore.classList.remove('hidden')
         scores.forEach(item => {
