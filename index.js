@@ -143,6 +143,7 @@ const pingPong = function() {
     let sketch = function(p) {
         gCanvas = p
 
+        gBallSpeed = gIsMobile ? 6 : 10
         p.preload = function () {
             p.soundFormats('wav')
             gSounds = {

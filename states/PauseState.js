@@ -20,7 +20,7 @@ class PauseState extends BaseState {
     }
 
     render = () => {
-        gCanvas.fill(12, 0, 72, 100)
+        gCanvas.fill(0, 50, 129, 100)
         balls.forEach(ball => {
             ball.render()
         })

@@ -118,7 +118,7 @@ class PlayState extends BaseState {
             gCanvas.pop()
         }
 
-        gCanvas.fill(12, 0, 72)
+        gCanvas.fill(0, 50, 129)
         balls.forEach(ball => {
             ball.render()
         })
