@@ -144,6 +144,7 @@ span.credits {
 .existing-score td, .existing-score th {
     padding: 10px;
     text-align: center;
+    width: 25%;
 }
 
 .existing-score tr td {

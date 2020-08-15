@@ -4,6 +4,13 @@ class TitleScreenState extends BaseState {
         this.acceptInput = true
     }
 
+    updateStage = () => {
+        gSounds.startGame.play()
+        hideExistingScores()
+        gStateMachine.changeState("countDown")
+        gDescriptionElement.removeEventListener('click', this.updateStage)
+    }
+
     enter = () => {
         gTitleElement.innerHTML = `Welcome <span class="name 1">${gPlayer1Name}</span> & <span class="name 2">${gPlayer2Name}</span> to ping pong`
         let decisionKey = gIsMobile ? 'Tap here' : 'Press enter'
@@ -15,6 +22,11 @@ class TitleScreenState extends BaseState {
         gPlayPauseIndicator.classList.add('hidden')
 
         populateExistingScores()
+
+        if(gIsMobile) {
+            console.log(gDescriptionElement)
+            gDescriptionElement.addEventListener('click', this.updateStage)
+        }
 
         document.querySelector('.credits').classList.remove('faded')
 
@@ -32,10 +44,8 @@ class TitleScreenState extends BaseState {
     }
 
     update = () => {
-        if (this.keyBoardEntry() && this.acceptInput) {
-            gSounds.startGame.play()
-            hideExistingScores()
-            gStateMachine.changeState("countDown")
+        if (this.keyBoardEntry()) {
+            this.updateStage()
         }
     }
 }
